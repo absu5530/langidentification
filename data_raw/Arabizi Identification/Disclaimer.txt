@@ -1,0 +1,13 @@
+These resources are generated as part of PhD research project, only public data was collected from Twitter, none of the content represent the author's opinion, sentiment, or stance. 
+
+Making this data public is strictly under the condition of "non-commercial use only".
+
+If you make use of any of the data for research or plan to build upon (modify, improve, edit, delete, remix, alter) please cite our work: 
+
+@inproceedings{tobaili2016arabizi,
+  title={Arabizi identification in twitter data},
+  author={Tobaili, Taha},
+  booktitle={Proceedings of the ACL 2016 Student Research Workshop},
+  pages={51--57},
+  year={2016}
+}
