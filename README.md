@@ -1,1 +1,1 @@
-# langidentification: Language identification using fastText for Romanised Scripts
+langidentification: Language identification using fastText for Romanised Scripts
