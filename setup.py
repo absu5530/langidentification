@@ -3,14 +3,15 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = ["ipython>=6", "nbformat>=4", "nbconvert>=5", "requests>=2"]
+requirements = ["fasttext>=0.9.2", "wget>=3.2"]
 
 setup(
-    name="notebookc",
-    version="0.0.1",
+    name="langidentification",
+    version="0.0.9",
     author="Abhishek Suresh",
-    author_email="abihshek.sures@gmail.com",
-    description="A package to convert your Jupyter Notebook",
+    author_email="abhishek.sures@gmail.com",
+    description="A package for language identification based on fastText, including romanised South Asian languages "
+                "and Arabic",
     long_description=readme,
     long_description_content_type="text/markdown",
     url="https://github.com/absu5530/langidentification",
