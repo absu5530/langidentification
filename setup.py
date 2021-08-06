@@ -7,7 +7,7 @@ requirements = ["fasttext>=0.9.2", "wget>=3.2"]
 
 setup(
     name="langidentification",
-    version="0.0.9",
+    version="0.1",
     author="Abhishek Suresh",
     author_email="abhishek.sures@gmail.com",
     description="A package for language identification based on fastText, including romanised South Asian languages "

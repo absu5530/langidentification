@@ -23,11 +23,13 @@ class LangIdentification:
             file_path = os.path.join(dir_path,
                                      f'langdetect_{model_type}.ftz')
             if Path(file_path).exists():
+                logging.info(f'Loading model langdetect_{model_type}.ftz...\n')
                 self.model = fasttext.load_model(file_path)
             else:
+                logging.info(f'Model langdetect_{model_type}.ftz was not found. Checking for models directory '
+                             f'and creating if not available...\n')
+                os.makedirs(dir_path, exist_ok=True)
                 try:
-                    logging.info(f'Model langdetect_{model_type}.ftz was not found. Checking for models directory...\n')
-                    os.makedirs(dir_path, exist_ok=True)
                     logging.info(f'Downloading langdetect_{model_type}.ftz...\n')
                     url = f'https://github.com/absu5530/langidentification/releases/latest/download/' \
                           f'langdetect_{model_type}.ftz'
@@ -41,7 +43,7 @@ class LangIdentification:
 
         self.punct_table = str.maketrans(dict.fromkeys(string.punctuation))
 
-    def _preprocess_text(self, text='test_string'):
+    def preprocess_text(self, text='test_string'):
         if isinstance(text, str):
             preprocessed_text = text.translate(self.punct_table)
         elif isinstance(text, list):
@@ -54,5 +56,5 @@ class LangIdentification:
         return preprocessed_text
 
     def predict_lang(self, text):
-        preprocessed_text = self._preprocess_text(text)
+        preprocessed_text = self.preprocess_text(text)
         return self.model.predict(preprocessed_text)
