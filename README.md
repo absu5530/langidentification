@@ -8,7 +8,7 @@ available data found on the [Tatoeba website](https://tatoeba.org/en/downloads).
 for which at least 100 sample sentences were present in the data.
 
 The `augmented` model was trained on all the data used for the `original` model with the addition of three more datasets:
-* The [Dakshina dataset (romanized sentences)](https://github.com/google-research-datasets/dakshina), with Wikipedia 
+* The [Dakshina Dataset (romanized sentences)](https://github.com/google-research-datasets/dakshina), with Wikipedia 
   sentence data representing 12 South Asian languages: Bengali (`bn`), Gujarati (`gu`), Kannada (`kn`), 
   Malayalam (`ml`), Sinhala (`si`), Tamil (`ta`), Telugu (`te`), Hindi (`hi`), Marathi (`mr`), Punjabi (`pa`), 
   Urdu (`ur`) and Sindhi (`sd`)
@@ -19,7 +19,7 @@ The `augmented` model was trained on all the data used for the `original` model 
 
 Although built using fastText, these models **are not comparable** to the official 
 [fastText models](https://fasttext.cc/docs/en/language-identification.html), which are built on more data than the 
-Tatoeba dataset. They are however capable of identifying romanized South Asian language and Arabic (`ar`) text 
+Tatoeba dataset. These models are however capable of identifying romanized South Asian language and Arabic (`ar`) text 
 with the suffix `-rom`.
 
 ## Model Performance
@@ -31,11 +31,12 @@ with the suffix `-rom`.
 ## What is fastText and how were these models built?
 
 fastText is the implementation of a text embedding method presented in 
-[Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606) by Bojanowski et al. This method 
-is an enhancement of the Word2vec skipgram model which attempts to learn a vector representation for every word
-by training it to predict other words that appear in the context of the given word. The objective of the skipgram model 
-is to find a set of parameters, i.e. word vectors, such that the likelihood of observing a certain context word given 
-a certain target word is maximized.
+[Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606) by Bojanowski et al. 
+
+This method is an enhancement of the Word2vec skipgram model which attempts to learn a vector representation for every 
+word by training it to predict other words that appear in the context of the given word. The objective of the skipgram 
+model is to find a set of parameters, i.e. word vectors, such that the likelihood of observing a certain context word 
+given a certain target word is maximized.
 
 fastText builds on the skipgram model by representing words as a sum of the vector representations of their constituent 
 character n-grams and training with the goal of independently predicting the presence of context words. "Positive" 
