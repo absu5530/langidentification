@@ -1,5 +1,5 @@
 import unittest
-from langidentification.langidentification import *
+from langidentification import LangIdentification, LangIdentificationException
 
 
 class LangIdentificationTestPreprocessText(unittest.TestCase):
@@ -76,7 +76,7 @@ class LangIdentificationTestPredictLang(unittest.TestCase):
 
     def test_01_test_ta_rom(self):
         """
-        Test some romanised formal Tamil
+        Test some romanized formal Tamil
         """
         prediction = self.model.predict_lang('indhiya idhayangalil hockeyai uchathukku kondu sendra singa pengal')
 
@@ -85,7 +85,7 @@ class LangIdentificationTestPredictLang(unittest.TestCase):
 
     def test_02_test_ta_rom(self):
         """
-        Test some romanised spoken Tamil
+        Test some romanized spoken Tamil
         """
         prediction = self.model.predict_lang('naan evlo solliyum kekkaama avan paattukku irukkaan')
 
@@ -94,7 +94,7 @@ class LangIdentificationTestPredictLang(unittest.TestCase):
 
     def test_03_test_ml_rom(self):
         """
-        Test some romanised Malayalam
+        Test some romanized Malayalam
         """
         prediction = self.model.predict_lang('athe, athu thanne. athu nallapadi theerkkanam ketto')
 
@@ -103,7 +103,7 @@ class LangIdentificationTestPredictLang(unittest.TestCase):
 
     def test_04_test_hi_rom(self):
         """
-        Test some romanised Hindi
+        Test some romanized Hindi
         """
         prediction = self.model.predict_lang('teesri lehar ke dar ke beech kya yeh school kholne ka sahi waqt hai?')
 
@@ -112,7 +112,7 @@ class LangIdentificationTestPredictLang(unittest.TestCase):
 
     def test_04_test_ar_rom(self):
         """
-        Test some romanised Arabic
+        Test some romanized Arabic
         """
         prediction = self.model.predict_lang('7ala2 bel beit w rayi7 3al she5el w reji3 da7ir ma3 lshabeb w inte?')
 

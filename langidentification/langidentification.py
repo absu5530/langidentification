@@ -34,6 +34,7 @@ class LangIdentification:
                     url = f'https://github.com/absu5530/langidentification/releases/latest/download/' \
                           f'langdetect_{model_type}.ftz'
                     wget.download(url, file_path)
+                    logging.info(f'Loading model langdetect_{model_type}.ftz...\n')
                     self.model = fasttext.load_model(file_path)
                 except Exception as e:
                     raise LangIdentificationException(f'Error in getting model: {str(e)}')
