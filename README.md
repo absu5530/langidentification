@@ -40,12 +40,14 @@ a certain target word is maximized.
 fastText builds on the skipgram model by representing words as a sum of the vector representations of their constituent 
 character n-grams and training with the goal of independently predicting the presence of context words. "Positive" 
 examples, being the actual context words, and "negative" examples, being other words randomly drawn from the vocabulary, 
-are used 
+are used to train on.
 
 For example, in the sentence `She is a pretty cat.`, if the target word is `pretty`, over the course of training, the 
 vector representation for `pretty` should evolve to be closer to the representations for the words `a` and `cat` and 
 further from other randomly sampled words, such as `computer` or `dirt`. As the word vector for `pretty` is adjusted 
-during this process, so are the constituent character n-gram vectors, e.g. `pre`, `etty` and `rett`.
+during this process, so are the constituent character n-gram vectors, e.g. for `pre`, `etty` and `rett`.
+
+The intuition here is that training subword representations helps to more accurately capture nuances in word morphology.
 
 The character n-grams used for the models in this package are between two and four characters long. The vector 
 representations learned are in 50 dimensions.
