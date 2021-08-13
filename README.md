@@ -29,6 +29,32 @@ with the suffix `-rom`.
 |**original**|0.79|0.65|0.65|
 |**augmented**|0.75|0.66|0.66|
 
+## Installation
+
+```
+pip install langidentification
+```
+
+## Usage
+Valid `model_type`s are `original` and `augmented`. The `augmented` model is capable of making romanized language 
+predictions.
+
+Both models are hosted on [GitHub releases](https://github.com/absu5530/langidentification/releases) and are downloaded 
+at runtime if not found.
+
+```
+>>> from langidentification import LangIdentification
+>>> model = LangIdentification(model_type='augmented')
+INFO:root:Model langdetect_augmented.ftz was not found. Checking for models directory and creating if not available...
+
+INFO:root:Downloading langdetect_augmented.ftz...
+
+100% [......................................................................] 276567331 / 276567331INFO:root:Loading model langdetect_augmented.ftz...
+
+>>> model.predict_lang('ithu velai seyyuma?')
+(('__label__ta-rom',), array([0.87046105]))
+```
+
 ## What is fastText and how were these models built?
 
 fastText is the implementation of a text embedding method presented in 
@@ -54,35 +80,16 @@ The intuition here is that training subword representations helps to more accura
 The character n-grams used for the models in this package are between two and four characters long. The vector 
 representations learned are in 50 dimensions.
 
-The models were quantized ([relevant SciPy modules](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html)) to make 
-them smaller and faster at inference time. Quantization is a process by which the embedding vectors (n vectors x 
+The models were quantized to make them smaller and faster at inference time. 
+
+## What is quantization?
+
+Quantization ([relevant SciPy modules](https://docs.scipy.org/doc/scipy/reference/cluster.vq.html)) is a process by which the embedding vectors (n vectors x 
 d dimensions) are split into m distinct subvectors (n vectors x d/m dimensions), and then a k-means clustering algorithm 
 is run on each of those subvectors. In doing so, a set of centroids (k clusters x d/m dimensions) is identified for each 
-subvector. 
+subvector.
 
 This set of centroids acts as the encoding with which to transform the original word vectors (n vectors x d dimensions) 
 into quantized vectors (n vectors x m dimensions). For each one of m subvectors, each of the original word vectors 
 is classified with the cluster number or centroid index of the centroid closest to it. In this way, each word gets 
 assigned m values, producing a final matrix of n vectors x m dimensions.
-
-## Installation
-
-```
-pip install langidentification
-```
-
-## Usage
-Valid `model_type`s are `original` and `augmented`. The `augmented` model is capable of making romanized language 
-predictions.
-
-Both models are hosted on [GitHub releases](https://github.com/absu5530/langidentification/releases) and are downloaded 
-at runtime if not found.
-
-```
->>> from langidentification import LangIdentification
->>> model = LangIdentification(model_type='augmented')
-INFO:root:Loading model langdetect_augmented.ftz...
-
->>> model.predict_lang('ithu velai seyyuma?')
-(('__label__ta-rom',), array([0.99651122]))
-```
