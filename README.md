@@ -24,9 +24,10 @@ with the suffix `-rom`.
 
 ## Model Performance
 
-|Model|Precision|Recall|
-|---|---|---|
-|original||a|
+|Model|Precision|Recall|F1 score|
+|---|---|---|---|
+|**original**|0.79|0.65|0.65|
+|**augmented**|0.75|0.66|0.66|
 
 ## What is fastText and how were these models built?
 
